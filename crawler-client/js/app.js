@@ -21,10 +21,6 @@ searchForm.addEventListener("submit", handleSearchSubmit);
 function parseDomains(response) {
   const { domains } = response;
   domains.forEach(domain => {
-    if (!domain.domain) {
-      return;
-    }
-
     const link = buildLink(domain);
     const listElement = buildListElement(link);
 
@@ -51,8 +47,6 @@ function handleSearchSubmit(evt) {
       return response.json();
     })
     .then(function(response) {
-      console.log("response");
-      console.log(response);
       const card = document.querySelector(".cw-card");
       card.classList.add("cw-card-active");
       parseDomains(response);
@@ -61,8 +55,8 @@ function handleSearchSubmit(evt) {
 
 function buildLink(domain) {
   const link = document.createElement("a");
-  link.setAttribute("href", domain.domain);
-  link.innerHTML = domain.domain;
+  link.setAttribute("href", domain);
+  link.innerHTML = domain;
 
   return link;
 }
