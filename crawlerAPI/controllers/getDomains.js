@@ -64,7 +64,7 @@ module.exports = (req, res) => {
 
   const getSiteData = (error, response, body) => {
     if (error) {
-      return res.send("SOME ERR");
+      return res.send( { success: false, err: error });
     }
 
     const $ = cheerio.load(body);
@@ -76,7 +76,7 @@ module.exports = (req, res) => {
     });
     const finalLinks = extractStandaloneDomains(linkList);
 
-    return res.send({ domains: finalLinks });
+    return res.send({ success: true, domains: finalLinks });
   };
 
   request(initialDomain, getSiteData);

@@ -49,8 +49,13 @@ let iterations = 0;
 const limit = 10;
 
 const getSiteData = ( error, response, body ) => {
-
     if( error ) {
+      return
+    }
+
+    iterations ++;
+    if( iterations > limit ) {
+      console.log( "Final", allLinks );
       return
     }
 
@@ -61,10 +66,15 @@ const getSiteData = ( error, response, body ) => {
     links.each( ( index, link ) => {
       linkList.push( link.attribs.href );
     } )
-    console.log( "---BATCH---", extractStandaloneDomains( linkList ) );
-    const finalLinks = extractStandaloneDomains( linkList )
 
-    return finalLinks
+    const finalLinks = extractStandaloneDomains( linkList )
+    console.log( "---BATCH---", finalLinks );
+    allLinks.push( ...finalLinks );
+
+    finalLinks.unshift()
+    finalLinks.forEach( ( link ) => {
+      request( link, getSiteData );
+    }  )
 }
 
 const startCrawler = ( error, response, body ) => {
