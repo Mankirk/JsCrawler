@@ -1,15 +1,20 @@
 const express = require( "express" );
 const cors = require( "cors" );
+const bodyParser = require( "body-parser" );
 
 const app = express();
 const port = process.env.PORT || "8081";
 const router = express.Router();
 
-const getDomains = require( "./controllers/getDomains" );
+const domainGetters = require( "./controllers/getDomains" );
 
 app.use( cors() );
 
-router.post( "/domains", getDomains ) // return all DB domains
+app.use( bodyParser.json() );
+app.use( bodyParser.urlencoded( { extended: true } ) );
+
+router.post( "/domains", domainGetters )
+//router.get( "/domains/otherDomains", domainGetters.getAllOther ) //
 
 app.use( "/", router );
 app.listen( port, () => {

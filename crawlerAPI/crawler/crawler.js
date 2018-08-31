@@ -61,14 +61,13 @@ const getSiteData = ( error, response, body ) => {
     links.each( ( index, link ) => {
       linkList.push( link.attribs.href );
     } )
-    console.log( "---BATCH---", extractStandaloneDomains( linkList ) );
+    //console.log( "---BATCH---", extractStandaloneDomains( linkList ) );
     const finalLinks = extractStandaloneDomains( linkList )
 
-    return finalLinks
 }
 
-const startCrawler = ( error, response, body ) => {
-    getSiteData( error, response, body );
+const crawlOnce = ( startDomain, callback ) => {
+  return request( startDomain, getSiteData( callback ) )
 }
 
-request( "http://www.prosport.ro", startCrawler )
+exports.crawlOnce = crawlOnce
