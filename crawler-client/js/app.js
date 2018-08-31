@@ -50,7 +50,13 @@ function handleSearchSubmit(evt) {
     .then(function(response) {
       return response.json();
     })
-    .then(function(response) {});
+    .then(function(response) {
+      console.log("response");
+      console.log(response);
+      const card = document.querySelector(".cw-card");
+      card.classList.add("cw-card-active");
+      parseDomains(response);
+    });
 }
 
 function buildLink(domain) {

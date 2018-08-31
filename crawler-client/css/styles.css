@@ -47,4 +47,36 @@ body {
   background: #fff;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+  display: none;
+}
+
+.cw-card.cv-card-active {
+  display: block;
+}
+
+.cw-search {
+  margin: 20px auto;
+  max-width: 600px;
+  width: 100%;
+}
+
+.cw-search input {
+  padding: 10px;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: monospace;
+  display: block;
+  width: 100%;
+}
+
+.cw-search input:focus {
+  outline: none;
+}
+
+.cw-search input::placeholder {
+  color: #fff;
 }
