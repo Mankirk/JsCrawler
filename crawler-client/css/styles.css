@@ -1,0 +1,50 @@
+body {
+  background: #774cff;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.cw-header {
+  background: #222020;
+  padding: 10px 20px;
+}
+
+.cw-header h1 {
+  margin: 0;
+  color: #fff;
+  font-family: monospace;
+  letter-spacing: 1px;
+}
+
+.cw-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cw-links li {
+  margin: 0 0 5px;
+}
+
+.cw-links a {
+  color: #222;
+  text-decoration: none;
+  font-size: 12px;
+  display: block;
+  padding: 5px 6px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.cw-links a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cw-card {
+  border-radius: 3px;
+  margin: 10px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+}

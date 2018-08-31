@@ -5,7 +5,7 @@ const crawler = require( "../crawler/crawler" );
 
 const db = {};
 const config = {
-  dataDir: "data",
+  dataDir: "../data",
   dbDir: "/db"
 };
 
@@ -13,6 +13,8 @@ db.domains = new Datastore({
   filename: `${config.dataDir + config.dbDir}/domains.db`,
   autoload: true
 });
+
+
 
 db.domains.ensureIndex( { fieldName: "domain" } );
 
@@ -80,3 +82,4 @@ module.exports = ( req, res ) => {
 
     request( initialDomain, getSiteData )
 }
+
