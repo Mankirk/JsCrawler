@@ -12,11 +12,11 @@ const fetchOptions = {
 
 searchForm.addEventListener("submit", handleSearchSubmit);
 
-fetch(`${baseApiUrl}/domains`, fetchOptions)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(parseDomains);
+// fetch(`${baseApiUrl}/domains`, fetchOptions)
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(parseDomains);
 
 function parseDomains(response) {
   const { domains } = response;
@@ -33,7 +33,6 @@ function parseDomains(response) {
 }
 
 function handleSearchSubmit(evt) {
-  console.log("submit");
   evt.preventDefault();
   const initialDomain = evt.target.querySelector("input").value;
   const data = {
@@ -44,15 +43,14 @@ function handleSearchSubmit(evt) {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
+    mode: "cors",
     method: "POST",
-    data: JSON.stringify(data)
+    body: JSON.stringify(data)
   })
     .then(function(response) {
       return response.json();
     })
-    .then(function(response) {
-      console.log(response);
-    });
+    .then(function(response) {});
 }
 
 function buildLink(domain) {
