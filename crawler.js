@@ -44,14 +44,16 @@ const extractStandaloneDomains = ( linkList ) => {
 }
 
 
-const allLinks = ["https://www.mediafax.ro"];
+const allLinks = [];
+let iterations = 0;
+const limit = 10;
 
 const getSiteData = ( error, response, body ) => {
 
     if( error ) {
       return
     }
-    
+
     const $ = cheerio.load( body );
     const links = $( "a" );
 
@@ -61,6 +63,14 @@ const getSiteData = ( error, response, body ) => {
     } )
     console.log( "---BATCH---", extractStandaloneDomains( linkList ) );
     const finalLinks = extractStandaloneDomains( linkList )
+    allLinks.push( finalLinks )
+
+    iterations++;
+    if( iterations > limit ) {
+      console.log( `REACHED ${ limit } ITERATIONS` )
+      console.log( "FINAL", allLinks )
+      return
+    }
 
     if( finalLinks.length !== 0 ) {
       finalLinks.shift();
