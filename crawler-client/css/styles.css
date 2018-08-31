@@ -50,7 +50,7 @@ body {
   display: none;
 }
 
-.cw-card.cv-card-active {
+.cw-card.cw-card-active {
   display: block;
 }
 
