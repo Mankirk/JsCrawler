@@ -12,7 +12,6 @@ const domainGetters = require( "./controllers/getDomains" );
 app.use(cors());
 
 
-router.get("/domains", getDomains); // return all DB domains
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
 
